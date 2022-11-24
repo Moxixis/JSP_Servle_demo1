@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--映射文件配置 -->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace命名空间，作用：对sql进行分类化管理 -->
+<mapper namespace="com.jnu.dao.IUserDao">
+    <insert id="insertUser" parameterType="com.jnu.domain.User">
+        insert into
+        t_users(userName, password)
+        values (#{userName}, #{password})
+    </insert>
+
+    <select id="queryUserByName" parameterType="java.lang.String" resultType="com.jnu.domain.User">
+        select *
+        from t_users
+        where userName = #{userName}
+    </select>
+    
+    <select id="addUser" resultType="com.jnu.domain.User">
+        insert into
+        t_users(userName, password)
+        values (#{userName}, #{password})
+    </select>
+
+    <select id="updateUser">
+        update
+            t_users
+        set
+            userName = #{userName},
+            password = #{password},
+            name = #{name},
+            sno = #{sno},
+            gender = #{gender},
+            class = #{per_class},
+            IDnumber = #{IDnumber},
+            age = #{age},
+            addr = #{addr},
+            mor_up = #{mor_up},
+            eve_sleep = #{eve_sleep},
+            bestfood = #{bestfood},
+            fav_place = #{fav_place},
+            fav_idol = #{fav_idol},
+            fav_book = #{fav_book},
+            hobby = #{hobby}
+        where userName = "${now_userName}"
+    </select>
+
+</mapper>
